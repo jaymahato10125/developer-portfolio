@@ -19,7 +19,7 @@ import Footer, { SiteFooter } from "../components/Footer";
  */
 export default function Page() {
   return (
-    <div className="relative flex min-h-[calc(100vh-2*theme(spacing.frame-padding-desktop))] flex-col overflow-hidden rounded-xl bg-surface text-on-surface shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <div className="t-theme relative flex min-h-[calc(100vh-2*theme(spacing.frame-padding-desktop))] flex-col overflow-hidden rounded-xl bg-surface text-on-surface shadow-[0_1px_8px_rgba(0,0,0,0.04)] dark:bg-dark-base dark:text-dark-ink">
       <Navbar />
       <main className="w-full flex-1 pt-20">
         <div className="flex w-full flex-col">

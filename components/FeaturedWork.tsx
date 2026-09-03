@@ -12,21 +12,23 @@ export default function FeaturedWork() {
   return (
     <section className="mx-auto w-full max-w-[1440px]">
       <Reveal>
-        <div className="relative overflow-hidden rounded-3xl bg-surface-container-high p-6 shadow-lg sm:p-10 lg:p-12">
+        <div className="t-theme relative overflow-hidden rounded-3xl border border-on-surface/10 bg-surface-container-high p-6 shadow-lg dark:border-white/10 dark:bg-dark-1 sm:p-10 lg:p-12">
           <div className="flex flex-wrap items-center justify-between gap-4 pb-8">
             <div className="flex items-center gap-4">
-              <span className="font-display-xl text-headline-lg text-primary">01</span>
+              <span className="font-display-xl text-headline-lg text-primary dark:text-accent-bright">
+                01
+              </span>
               <div>
-                <span className="block font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-on-surface-variant">
+                <span className="block font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-on-surface-variant dark:text-dark-muted">
                   Featured case archive
                 </span>
-                <h2 className="font-headline-md text-headline-md uppercase text-on-surface">
+                <h2 className="font-headline-md text-headline-md uppercase text-on-surface dark:text-dark-ink">
                   Spatial Compute &amp; Workflow Optimization
                 </h2>
               </div>
             </div>
             <a
-              className="inline-flex items-center gap-2 rounded-full bg-surface px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary"
+              className="inline-flex items-center gap-2 rounded-full border border-on-surface/10 bg-surface px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary dark:border-white/10 dark:bg-dark-2 dark:text-dark-ink dark:hover:border-primary dark:hover:bg-primary dark:hover:text-on-primary"
               href="#cases"
             >
               <span>Explore the Work</span>
@@ -34,7 +36,7 @@ export default function FeaturedWork() {
             </a>
           </div>
 
-          <div className="relative overflow-hidden rounded-2xl bg-secondary p-6 text-on-secondary shadow-xl sm:p-8 lg:p-10">
+          <div className="relative overflow-hidden rounded-2xl border border-on-surface/10 bg-secondary p-6 text-on-secondary shadow-xl dark:border-white/10 sm:p-8 lg:p-10">
             <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
             <div className="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
               <div className="space-y-6 lg:col-span-6">
@@ -45,7 +47,7 @@ export default function FeaturedWork() {
                 <h3 className="font-headline-lg text-headline-lg-mobile uppercase leading-none tracking-tight sm:text-headline-lg">
                   Apex OS — Next-Gen Enterprise Spatial Intelligence
                 </h3>
-                <p className="font-body-md text-body-md text-secondary-fixed-dim">
+                <p className="font-body-md text-body-md text-secondary-fixed-dim dark:text-[#d9e9dc]">
                   Architected a tactile, high-density data canvas designed for deep network
                   orchestration and live topological telemetry.
                 </p>
@@ -54,13 +56,13 @@ export default function FeaturedWork() {
                     <div className="font-headline-md text-headline-md text-secondary-fixed">
                       ▲ +142%
                     </div>
-                    <div className="font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-secondary-fixed-dim">
+                    <div className="font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-secondary-fixed-dim dark:text-[#d9e9dc]">
                       User Retention
                     </div>
                   </div>
                   <div className="rounded-xl bg-on-secondary-fixed-variant/40 p-4 backdrop-blur-md">
                     <div className="font-headline-md text-headline-md text-on-primary">4.8M</div>
-                    <div className="font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-secondary-fixed-dim">
+                    <div className="font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-secondary-fixed-dim dark:text-[#d9e9dc]">
                       Active Nodes
                     </div>
                   </div>
@@ -68,7 +70,7 @@ export default function FeaturedWork() {
               </div>
 
               <div className="relative lg:col-span-6">
-                <div className="space-y-4 rounded-xl bg-inverse-surface p-5 shadow-2xl">
+                <div className="space-y-4 rounded-xl border border-on-surface/10 bg-inverse-surface p-5 shadow-2xl dark:border-white/10 dark:bg-[#0e0e0d]">
                   <div className="flex items-center justify-between pb-3">
                     <div className="flex items-center gap-2">
                       <span className="h-3 w-3 rounded-full bg-primary" />
@@ -108,7 +110,7 @@ export default function FeaturedWork() {
                     <span className="font-label-mono-sm text-label-mono-sm uppercase">
                       Latency spread: 14ms
                     </span>
-                    <span className="font-label-mono-sm text-label-mono-sm font-bold uppercase text-primary">
+                    <span className="font-label-mono-sm text-label-mono-sm font-bold uppercase text-primary dark:text-accent-bright">
                       Ready to deploy
                     </span>
                   </div>

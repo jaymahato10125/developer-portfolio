@@ -29,12 +29,12 @@ export default function Testimonials() {
 
   return (
     <section className="mx-auto w-full max-w-[1440px] py-6">
-      <div className="rounded-3xl bg-surface-container-low p-8 shadow-sm sm:p-12 lg:p-16">
+      <div className="t-theme rounded-3xl border border-on-surface/10 bg-surface-container-low p-8 shadow-sm dark:border-white/10 dark:bg-dark-1 sm:p-12 lg:p-16">
         <Reveal>
           <div className="flex flex-col justify-between gap-6 pb-8 md:flex-row md:items-end">
             <div className="space-y-2">
-              <Eyebrow className="text-primary">Endorsements</Eyebrow>
-              <h2 className="font-headline-lg text-headline-lg-mobile uppercase text-on-surface sm:text-headline-lg">
+              <Eyebrow className="text-primary dark:text-accent-bright">Endorsements</Eyebrow>
+              <h2 className="font-headline-lg text-headline-lg-mobile uppercase text-on-surface dark:text-dark-ink sm:text-headline-lg">
                 Peer &amp; Leadership Testimonial
               </h2>
             </div>
@@ -42,14 +42,14 @@ export default function Testimonials() {
               <button
                 aria-label="Previous review"
                 onClick={() => setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1))}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-surface text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-on-surface/10 bg-surface text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary dark:border-white/10 dark:bg-dark-2 dark:text-dark-ink dark:hover:border-primary dark:hover:bg-primary dark:hover:text-on-primary"
               >
                 <ArrowLeft size={18} />
               </button>
               <button
                 aria-label="Next review"
                 onClick={() => setIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1))}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-surface text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-on-surface/10 bg-surface text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary dark:border-white/10 dark:bg-dark-2 dark:text-dark-ink dark:hover:border-primary dark:hover:bg-primary dark:hover:text-on-primary"
               >
                 <ArrowRight size={18} />
               </button>
@@ -58,7 +58,7 @@ export default function Testimonials() {
         </Reveal>
         <div className="grid grid-cols-1 items-center gap-8 pt-4 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-8">
-            <span className="block select-none font-display-xl text-display-xl leading-none text-primary">
+            <span className="block select-none font-display-xl text-display-xl leading-none text-primary dark:text-accent-bright">
               &ldquo;
             </span>
             <AnimatePresence mode="wait">
@@ -69,23 +69,23 @@ export default function Testimonials() {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3 }}
               >
-                <p className="font-headline-md text-headline-md uppercase leading-snug text-on-surface">
+                <p className="font-headline-md text-headline-md uppercase leading-snug text-on-surface dark:text-dark-ink">
                   {t.quote}
                 </p>
                 <div className="flex items-center gap-4 pt-4">
-                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-surface-container-highest shadow-sm">
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-surface-container-highest shadow-sm dark:bg-dark-2">
                     <div
-                      className="h-full w-full bg-cover bg-center"
+                      className="h-full w-full bg-cover bg-center dark:brightness-[.92]"
                       style={{ backgroundImage: `url('${assets.testimonialPortrait}')` }}
                       role="img"
                       aria-label="Portrait of testimonial author"
                     />
                   </div>
                   <div>
-                    <h4 className="font-headline-md text-body-xl uppercase leading-tight text-on-surface">
+                    <h4 className="font-headline-md text-body-xl uppercase leading-tight text-on-surface dark:text-dark-ink">
                       {t.name}
                     </h4>
-                    <p className="font-label-mono-sm text-label-mono-sm uppercase text-primary">
+                    <p className="font-label-mono-sm text-label-mono-sm uppercase text-primary dark:text-accent-bright">
                       {t.role}
                     </p>
                   </div>
@@ -94,24 +94,28 @@ export default function Testimonials() {
             </AnimatePresence>
           </div>
           <Reveal delay={0.1} className="lg:col-span-4">
-            <div className="space-y-4 rounded-2xl bg-surface p-6 shadow-sm sm:p-8">
-              <div className="font-label-mono-sm text-label-mono-sm font-bold uppercase tracking-widest text-primary">
+            <div className="space-y-4 rounded-2xl border border-on-surface/10 bg-surface p-6 shadow-sm dark:border-white/10 dark:bg-dark-2 sm:p-8">
+              <div className="font-label-mono-sm text-label-mono-sm font-bold uppercase tracking-widest text-primary dark:text-accent-bright">
                 [ Engagement summary ]
               </div>
-              <div className="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+              <div className="space-y-3 font-body-sm text-body-sm text-on-surface-variant dark:text-dark-muted">
                 <div className="flex justify-between gap-4 pb-2">
                   <span>Scope:</span>
-                  <span className="text-right font-bold text-on-surface">
+                  <span className="text-right font-bold text-on-surface dark:text-dark-ink">
                     Design System Re-architecture
                   </span>
                 </div>
                 <div className="flex justify-between gap-4 pb-2">
                   <span>Duration:</span>
-                  <span className="font-bold text-on-surface">14 Weeks Sprint</span>
+                  <span className="font-bold text-on-surface dark:text-dark-ink">
+                    14 Weeks Sprint
+                  </span>
                 </div>
                 <div className="flex justify-between gap-4 pb-2">
                   <span>Impact:</span>
-                  <span className="font-bold text-primary">+210% Velocity</span>
+                  <span className="font-bold text-primary dark:text-accent-bright">
+                    +210% Velocity
+                  </span>
                 </div>
               </div>
               <div className="pt-2">

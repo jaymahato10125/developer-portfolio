@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
   html {
     scroll-behavior: smooth;
   }
@@ -35,8 +41,32 @@
     background-image: radial-gradient(rgba(243, 238, 227, 0.14) 1.5px, transparent 1.5px);
     background-size: 24px 24px;
   }
+  /* Dark-mode dot-grid: lighter dots at low opacity so the texture reads
+     without competing with content on near-black. */
+  .dark .bg-dot-grid {
+    background-image: radial-gradient(rgba(242, 240, 234, 0.09) 1.5px, transparent 1.5px);
+  }
   .text-outline-watermark {
     color: transparent;
     -webkit-text-stroke: 1.5px rgba(171, 46, 20, 0.15);
+  }
+  .dark .text-outline-watermark {
+    -webkit-text-stroke: 1.5px rgba(224, 101, 58, 0.32);
+  }
+  /* Scoped theme transition (150–250ms) for background/border/color only —
+     applied per-surface via `t-theme` so scroll stays jank-free. */
+  .t-theme {
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      fill 0.2s ease,
+      stroke 0.2s ease,
+      box-shadow 0.25s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-theme {
+      transition: none;
+    }
   }
 }

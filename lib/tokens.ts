@@ -82,6 +82,19 @@ export const colors = {
 
   // Dot-grid ink
   dot: "#d5cebe",
+
+  // Deliberate dark theme — elevated near-black layering, not inverted cream.
+  // Base #0B0B0A, cards step up through #131311 → #1B1A17 so depth comes from
+  // layering. Accent stays terracotta; accent-bright (#e0653a) is the raised
+  // variant for text/icons on dark (5.0–5.7:1, WCAG AA).
+  "dark-frame": "#060605",
+  "dark-base": "#0b0b0a",
+  "dark-1": "#131311",
+  "dark-2": "#1b1a17",
+  "dark-ink": "#f2f0ea",
+  "dark-muted": "#b9ac9c",
+  "dark-faint": "#8a7f70",
+  "accent-bright": "#e0653a",
 } as const;
 
 export const spacing = {
