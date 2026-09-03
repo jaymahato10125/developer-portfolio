@@ -1,7 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
-import { assets, content } from "../lib/tokens";
+import { assets } from "../lib/tokens";
+import { cta as copy, profile } from "../lib/content";
 
 /** Closing CTA banner — forest panel with foliage bleed. */
 export default function CTABanner() {
@@ -20,29 +21,28 @@ export default function CTABanner() {
           <div className="relative z-10 max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-secondary-fixed px-3 py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-secondary-fixed">
               <Eyebrow glyph="◆" className="text-on-secondary-fixed">
-                Let&rsquo;s talk spec &amp; timeline
+                {copy.badge}
               </Eyebrow>
             </div>
             <h2 className="font-display-xl text-headline-lg-mobile uppercase leading-none tracking-tight sm:text-display-xl">
-              Let&rsquo;s build something great together
+              {copy.heading}
             </h2>
             <p className="max-w-xl font-body-xl text-body-xl text-secondary-fixed-dim dark:text-[#d9e9dc]">
-              Currently booking select product design partnerships for Q2 &amp; Q3. Available for
-              high-velocity venture studios, stealth startups, and mature platforms.
+              {copy.body}
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <a
                 className="t-theme inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-md transition-all hover:bg-on-surface dark:shadow-[0_0_36px_rgba(224,101,58,0.45)] dark:hover:bg-primary dark:hover:shadow-[0_0_48px_rgba(224,101,58,0.6)]"
-                href={`mailto:${content.email}`}
+                href={`mailto:${profile.email}`}
               >
-                <span>Book a Discovery Call</span>
+                <span>{copy.primary}</span>
                 <ArrowRight size={14} />
               </a>
               <a
                 className="inline-flex items-center gap-2 rounded-full bg-surface-container-lowest/10 px-8 py-4 font-label-mono-md text-label-mono-md uppercase text-on-secondary transition-colors hover:bg-surface-container-lowest/20"
-                href={`mailto:${content.email}`}
+                href={`mailto:${profile.email}`}
               >
-                <span>Direct Email</span>
+                <span>{copy.secondary}</span>
               </a>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
+import { featuredWork } from "../lib/content";
 
 const bars = [
   25, 35, 45, 32, 20, 50, 42, 30, 52, 38, 26, 46, 34, 22, 54, 40, 28, 44, 36, 24, 48, 32, 42, 26,
@@ -16,14 +17,14 @@ export default function FeaturedWork() {
           <div className="flex flex-wrap items-center justify-between gap-4 pb-8">
             <div className="flex items-center gap-4">
               <span className="font-display-xl text-headline-lg text-primary dark:text-accent-bright">
-                01
+                {featuredWork.index}
               </span>
               <div>
                 <span className="block font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-on-surface-variant dark:text-dark-muted">
-                  Featured case archive
+                  {featuredWork.kicker}
                 </span>
                 <h2 className="font-headline-md text-headline-md uppercase text-on-surface dark:text-dark-ink">
-                  Spatial Compute &amp; Workflow Optimization
+                  {featuredWork.title}
                 </h2>
               </div>
             </div>
@@ -31,7 +32,7 @@ export default function FeaturedWork() {
               className="inline-flex items-center gap-2 rounded-full border border-on-surface/10 bg-surface px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary dark:border-white/10 dark:bg-dark-2 dark:text-dark-ink dark:hover:border-primary dark:hover:bg-primary dark:hover:text-on-primary"
               href="#cases"
             >
-              <span>Explore the Work</span>
+              <span>{featuredWork.cta}</span>
               <ArrowRight size={14} />
             </a>
           </div>
@@ -42,30 +43,28 @@ export default function FeaturedWork() {
               <div className="space-y-6 lg:col-span-6">
                 <div className="inline-flex items-center gap-2 rounded-full bg-secondary-fixed px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-secondary-fixed">
                   <span>■</span>
-                  <span>Enterprise spatial platform</span>
+                  <span>{featuredWork.panel.badge}</span>
                 </div>
                 <h3 className="font-headline-lg text-headline-lg-mobile uppercase leading-none tracking-tight sm:text-headline-lg">
-                  Apex OS — Next-Gen Enterprise Spatial Intelligence
+                  {featuredWork.panel.heading}
                 </h3>
                 <p className="font-body-md text-body-md text-secondary-fixed-dim dark:text-[#d9e9dc]">
-                  Architected a tactile, high-density data canvas designed for deep network
-                  orchestration and live topological telemetry.
+                  {featuredWork.panel.body}
                 </p>
                 <div className="grid grid-cols-2 gap-4 pt-2">
-                  <div className="rounded-xl bg-on-secondary-fixed-variant/40 p-4 backdrop-blur-md">
-                    <div className="font-headline-md text-headline-md text-secondary-fixed">
-                      ▲ +142%
+                  {featuredWork.panel.metrics.map((m) => (
+                    <div
+                      key={m.label}
+                      className="rounded-xl bg-on-secondary-fixed-variant/40 p-4 backdrop-blur-md"
+                    >
+                      <div className="font-headline-md text-headline-md text-secondary-fixed">
+                        {m.value}
+                      </div>
+                      <div className="font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-secondary-fixed-dim dark:text-[#d9e9dc]">
+                        {m.label}
+                      </div>
                     </div>
-                    <div className="font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-secondary-fixed-dim dark:text-[#d9e9dc]">
-                      User Retention
-                    </div>
-                  </div>
-                  <div className="rounded-xl bg-on-secondary-fixed-variant/40 p-4 backdrop-blur-md">
-                    <div className="font-headline-md text-headline-md text-on-primary">4.8M</div>
-                    <div className="font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-secondary-fixed-dim dark:text-[#d9e9dc]">
-                      Active Nodes
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 
@@ -78,13 +77,13 @@ export default function FeaturedWork() {
                       <span className="h-3 w-3 rounded-full bg-surface-dim" />
                     </div>
                     <span className="font-label-mono-sm text-label-mono-sm uppercase text-surface-dim">
-                      OS_KERNEL // V4.20.9
+                      {featuredWork.panel.console.title}
                     </span>
                   </div>
                   <div className="space-y-2">
                     <div className="flex justify-between font-label-mono-sm text-label-mono-sm text-secondary-fixed-dim">
-                      <span>Topology synchronization</span>
-                      <span>99.98% optimal</span>
+                      <span>{featuredWork.panel.console.syncLabel}</span>
+                      <span>{featuredWork.panel.console.syncValue}</span>
                     </div>
                     <svg
                       className="h-20 w-full text-primary-fixed-dim"
@@ -108,10 +107,10 @@ export default function FeaturedWork() {
                   </div>
                   <div className="flex items-center justify-between rounded-lg bg-inverse-on-surface/10 p-3 text-secondary-fixed">
                     <span className="font-label-mono-sm text-label-mono-sm uppercase">
-                      Latency spread: 14ms
+                      {featuredWork.panel.console.latencyLabel}
                     </span>
                     <span className="font-label-mono-sm text-label-mono-sm font-bold uppercase text-primary dark:text-accent-bright">
-                      Ready to deploy
+                      {featuredWork.panel.console.latencyStatus}
                     </span>
                   </div>
                 </div>

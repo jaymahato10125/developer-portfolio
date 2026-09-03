@@ -3,8 +3,9 @@ import { ArrowRight } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
 import { assets } from "../lib/tokens";
+import { journal as copy } from "../lib/content";
 
-/** Journal — dark editorial essay cards. */
+/** Journal — engineering notes (draft placeholders). */
 export default function Journal() {
   return (
     <section
@@ -14,17 +15,16 @@ export default function Journal() {
       <Reveal>
         <div className="flex flex-col justify-between gap-6 pb-12 lg:flex-row lg:items-end">
           <div className="max-w-xl space-y-3">
-            <Eyebrow className="text-primary-fixed-dim">Journal &amp; Perspectives</Eyebrow>
+            <Eyebrow className="text-primary-fixed-dim">{copy.eyebrow}</Eyebrow>
             <h2 className="font-headline-lg text-headline-lg-mobile uppercase text-inverse-on-surface dark:text-dark-ink sm:text-headline-lg">
-              Essays on Modernist Software
+              {copy.heading}
             </h2>
-            <p className="font-body-md text-body-md text-surface-dim">
-              Thoughts on interface typography, software tactility, and spatial computing in
-              high-density software tools.
+            <p className="font-body-md text-body-md text-surface-dim dark:text-dark-muted">
+              {copy.body}
             </p>
           </div>
           <div className="font-label-mono-sm text-label-mono-sm uppercase text-surface-dim">
-            Read on Substack &amp; Read.cv
+            {copy.meta}
           </div>
         </div>
       </Reveal>
@@ -39,25 +39,22 @@ export default function Journal() {
                 aria-label="Golden hour autumnal woodland path"
               />
               <span className="absolute left-4 top-4 rounded-full bg-surface px-3 py-1 font-label-mono-sm text-label-mono-sm font-bold uppercase text-on-surface shadow-md dark:bg-dark-ink dark:text-dark-base">
-                Theory // 042
+                {copy.posts[0].badge}
               </span>
             </div>
             <div className="space-y-3">
               <div className="flex items-center gap-3 font-label-mono-sm text-label-mono-sm text-primary-fixed-dim">
-                <span>6 min read</span>
-                <span>•</span>
-                <span>October 2024</span>
+                <span>{copy.posts[0].meta}</span>
               </div>
               <h3 className="font-headline-md text-headline-md uppercase text-inverse-on-surface transition-colors group-hover:text-primary-fixed-dim dark:text-dark-ink dark:group-hover:text-accent-bright">
-                The Return of Tactile Skeuomorphism in Enterprise Tools
+                {copy.posts[0].title}
               </h3>
               <p className="font-body-md text-body-md text-surface-dim dark:text-dark-muted">
-                Why frictionless minimalism failed power users, and how tactile physical affordances
-                are bringing back cognitive focus and delight in complex developer surfaces.
+                {copy.posts[0].body}
               </p>
             </div>
             <div className="flex items-center gap-2 pt-2 font-label-mono-md text-label-mono-md font-bold uppercase text-primary transition-colors hover:text-primary-fixed-dim dark:text-accent-bright dark:hover:text-dark-ink">
-              <span>Read Essay</span>
+              <span>Read Note</span>
               <ArrowRight size={14} />
             </div>
           </article>
@@ -66,31 +63,28 @@ export default function Journal() {
           <article className="group h-full cursor-pointer space-y-6 rounded-2xl border border-transparent bg-surface-container-lowest/5 p-6 transition-all hover:bg-surface-container-lowest/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10">
             <div className="relative h-64 w-full overflow-hidden rounded-xl bg-surface-container-highest/10 dark:bg-white/5">
               <Image
-                alt="Kai Chen studio setting with minimal lighting"
+                alt="Developer desk setup with minimal lighting"
                 src={assets.portrait}
                 fill
                 className="object-cover opacity-80 grayscale transition-transform duration-700 group-hover:scale-105 dark:brightness-[.88] dark:saturate-[.9]"
               />
               <span className="absolute left-4 top-4 rounded-full bg-surface px-3 py-1 font-label-mono-sm text-label-mono-sm font-bold uppercase text-on-surface shadow-md dark:bg-dark-ink dark:text-dark-base">
-                Craft // 043
+                {copy.posts[1].badge}
               </span>
             </div>
             <div className="space-y-3">
               <div className="flex items-center gap-3 font-label-mono-sm text-label-mono-sm text-primary-fixed-dim">
-                <span>8 min read</span>
-                <span>•</span>
-                <span>November 2024</span>
+                <span>{copy.posts[1].meta}</span>
               </div>
               <h3 className="font-headline-md text-headline-md uppercase text-inverse-on-surface transition-colors group-hover:text-primary-fixed-dim dark:text-dark-ink dark:group-hover:text-accent-bright">
-                Why Micro-Interactions Define Emotional Product Loyalty
+                {copy.posts[1].title}
               </h3>
               <p className="font-body-md text-body-md text-surface-dim dark:text-dark-muted">
-                Breaking down the milliseconds between user intent and dynamic visual feedback. How
-                fine-grain haptics and spring physics create unforgettable product conviction.
+                {copy.posts[1].body}
               </p>
             </div>
             <div className="flex items-center gap-2 pt-2 font-label-mono-md text-label-mono-md font-bold uppercase text-primary transition-colors hover:text-primary-fixed-dim dark:text-accent-bright dark:hover:text-dark-ink">
-              <span>Read Essay</span>
+              <span>Read Note</span>
               <ArrowRight size={14} />
             </div>
           </article>

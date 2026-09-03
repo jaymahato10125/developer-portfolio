@@ -1,44 +1,23 @@
-import { Layers, Palette, Smartphone } from "lucide-react";
+import { Database, Monitor, Server } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
+import { capabilities as copy } from "../lib/content";
 
-const tiles = [
-  {
-    icon: Palette,
-    title: "Branding & Identity",
-    body: "Visual language systems, corporate brand books, custom typography, art direction, and editorial asset pipelines for tech leaders.",
-    dark: false,
-    chips: ["Brand Guides", "Iconography", "Art Direction"],
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile & Multi-Platform",
-    body: "Native iOS & Android design patterns, spatial tactile physics, fluid gesture navigation, and reactive micro-interactions.",
-    dark: true,
-    chips: ["SwiftUI Mocks", "Haptics Specs", "Mobile Apps"],
-  },
-  {
-    icon: Layers,
-    title: "Product Architecture",
-    body: "Complex SaaS software workflows, headless design token architectures, multi-tenant navigation trees, and design system governance.",
-    dark: false,
-    chips: ["Design Tokens", "Figma Libs", "Workflow Engine"],
-  },
-];
+const icons = [Monitor, Server, Database];
+const tiles = copy.tiles.map((t, i) => ({ ...t, icon: icons[i]! }));
 
-/** Capabilities — three tactile craft tiles. */
+/** Capabilities — stack and engineering tiles. */
 export default function Capabilities() {
   return (
     <section className="mx-auto w-full max-w-[1440px] py-6" id="capabilities">
       <Reveal>
         <div className="max-w-2xl space-y-4 pb-8">
-          <Eyebrow className="text-primary dark:text-accent-bright">Capabilities</Eyebrow>
+          <Eyebrow className="text-primary dark:text-accent-bright">{copy.eyebrow}</Eyebrow>
           <h2 className="font-headline-lg text-headline-lg-mobile uppercase text-on-surface dark:text-dark-ink sm:text-headline-lg">
-            Craft &amp; Strategic Competencies
+            {copy.heading}
           </h2>
           <p className="font-body-md text-body-md text-on-surface-variant dark:text-dark-muted">
-            Core craft competencies refined across a decade of high-growth digital product design,
-            architectural prototyping, and execution.
+            {copy.body}
           </p>
         </div>
       </Reveal>

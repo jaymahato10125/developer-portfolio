@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import { footer as copy, profile } from "../lib/content";
 
 /** Bespoke footer with watermark + outer quarterly-status footer (matches Stitch). */
 export default function Footer() {
@@ -10,18 +11,17 @@ export default function Footer() {
             <div className="space-y-4 md:col-span-5">
               <div className="flex items-center gap-3">
                 <span className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface dark:text-dark-ink">
-                  Kai Chen
+                  {profile.name}
                 </span>
                 <span className="font-label-mono-sm text-label-mono-sm uppercase text-primary dark:text-accent-bright">
-                  / Architect
+                  / Developer
                 </span>
               </div>
               <p className="max-w-sm font-body-md text-body-md text-on-surface-variant dark:text-dark-muted">
-                Architecting modern, tactile software interfaces, design systems, and digital
-                instruments for progressive technology companies.
+                {copy.brandBlurb}
               </p>
               <div className="pt-2 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant dark:text-dark-muted">
-                San Francisco • Tokyo • Remote worldwide
+                {copy.locations}
               </div>
             </div>
             <div className="space-y-3 md:col-span-2">
@@ -89,7 +89,7 @@ export default function Footer() {
                     className="transition-colors hover:text-primary dark:hover:text-accent-bright"
                     href="#"
                   >
-                    Colophon 2025
+                    Colophon 2026
                   </a>
                 </li>
                 <li>
@@ -115,60 +115,30 @@ export default function Footer() {
                 Network
               </span>
               <ul className="space-y-2 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant dark:text-dark-muted">
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    Twitter / X →
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    ReadCV →
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    GitHub Engine →
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    Dribbble Pro →
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    Substack →
-                  </a>
-                </li>
+                {copy.network.map((n) => (
+                  <li key={n.label}>
+                    <a
+                      className="transition-colors hover:text-primary dark:hover:text-accent-bright"
+                      href={n.href}
+                    >
+                      {n.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </Reveal>
         <div className="w-full select-none overflow-hidden py-4 text-center" aria-hidden>
           <div className="text-outline-watermark font-display-xl text-[64px] font-bold uppercase leading-none tracking-tight sm:text-[120px] lg:text-[180px]">
-            Kai Chen
+            Jay Mahato
           </div>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 pt-4 font-label-mono-sm text-label-mono-sm text-on-surface-variant dark:text-dark-muted sm:flex-row">
-          <span>Designed &amp; engineered with craft by Kai Chen © 2025. All rights reserved.</span>
+          <span>{copy.legal}</span>
           <div className="flex items-center gap-4">
             <span className="h-2 w-2 rounded-full bg-secondary" />
-            <span>Latency: 12ms • Time: SF (PST)</span>
+            <span>{copy.latency}</span>
           </div>
         </div>
       </footer>
@@ -184,15 +154,14 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 items-start gap-card-gap md:grid-cols-12">
           <div className="space-y-4 md:col-span-5">
             <div className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface dark:text-dark-ink">
-              Kai Chen
+              {profile.name}
             </div>
             <p className="max-w-md font-body-md text-body-md text-on-surface-variant dark:text-dark-muted">
-              Senior Digital Product Designer architecting modernist, tactile interfaces, bespoke
-              design systems, and cohesive software experiences.
+              {copy.brandBlurb}
             </p>
             <div className="flex items-center gap-3 pt-2 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant dark:text-dark-muted">
               <span className="inline-block h-2 w-2 rounded-full bg-primary" />
-              <span>San Francisco • Tokyo • Remote</span>
+              <span>{copy.locations}</span>
             </div>
           </div>
           <div className="space-y-3 md:col-span-3">
@@ -204,8 +173,8 @@ export function SiteFooter() {
                 "Index / Overview",
                 "Featured Case Studies",
                 "Core Capabilities",
-                "Thoughts & Essays",
-                "Engagement FAQ",
+                "Notes & Writing",
+                "Working Together FAQ",
               ].map((l) => (
                 <li
                   key={l}
@@ -224,23 +193,22 @@ export function SiteFooter() {
           </div>
           <div className="space-y-4 md:col-span-4">
             <div className="font-label-mono-md text-label-mono-md uppercase tracking-widest text-primary dark:text-accent-bright">
-              Quarterly Status
+              {copy.statusTitle}
             </div>
             <div className="space-y-2 rounded-lg border border-on-surface/10 bg-surface-container p-4 dark:border-white/10 dark:bg-dark-2">
               <div className="flex items-center gap-2 font-label-mono-sm text-label-mono-sm text-on-secondary-container dark:text-dark-muted">
                 <span className="inline-block h-2 w-2 rounded-full bg-secondary" />
-                <span className="font-bold">Currently booking</span>
+                <span className="font-bold">{copy.statusBadge}</span>
               </div>
               <p className="font-body-sm text-body-sm text-on-surface-variant dark:text-dark-muted">
-                Accepting select digital advisory roles and end-to-end product sprints starting
-                Q2/Q3.
+                {copy.statusBody}
               </p>
               <div className="pt-2">
                 <a
                   className="inline-flex items-center gap-1 font-label-mono-sm text-label-mono-sm font-bold uppercase text-primary transition-colors hover:text-on-surface dark:text-accent-bright dark:hover:text-dark-ink"
-                  href="#contact"
+                  href={`mailto:${profile.email}`}
                 >
-                  Schedule Discovery Call →
+                  {copy.statusCta}
                 </a>
               </div>
             </div>
@@ -248,34 +216,28 @@ export function SiteFooter() {
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-4 pt-8 font-label-mono-sm text-label-mono-sm text-on-surface-variant dark:text-dark-muted sm:flex-row">
           <div className="flex items-center gap-4">
-            <span>© 2025 Kai Chen. All rights reserved.</span>
+            <span>{copy.bottomNote}</span>
             <span className="hidden sm:inline">•</span>
-            <span className="hidden sm:inline">Typeset in Oswald &amp; Space Mono</span>
+            <span className="hidden sm:inline">{copy.colophon}</span>
           </div>
           <div className="flex items-center gap-6">
             <a
               className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
-              href="#"
-            >
-              Read.cv
-            </a>
-            <a
-              className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
-              href="#"
+              href={profile.github}
             >
               GitHub
             </a>
             <a
               className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
-              href="#"
+              href={profile.linkedin}
             >
-              Are.na
+              LinkedIn
             </a>
             <a
               className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
-              href="#"
+              href={`mailto:${profile.email}`}
             >
-              Sundial
+              Email
             </a>
           </div>
         </div>

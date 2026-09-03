@@ -1,10 +1,11 @@
 /**
- * Central design tokens — ported 1:1 from the Stitch export
- * "Kai Chen — Digital Product Designer Portfolio" (project 9033827608723361875)
- * Theme: Terracotta Editorial / Oswald + Plus Jakarta Sans + Space Mono
+ * Central design tokens — Terracotta Editorial theme
+ * (Oswald + Geist/Plus Jakarta Sans + Space Mono), originally scaffolded
+ * from the Stitch export and extended with a deliberate dark palette.
  *
  * Edit palette here; components reference Tailwind color names (e.g. bg-surface, text-primary)
  * so tweaks propagate everywhere. Do not hardcode hex values in components.
+ * Site copy lives in `lib/content.ts`, not here.
  */
 
 export const colors = {
@@ -201,16 +202,4 @@ export const assets = {
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAzVoig85tSGhybtxQF2e7ylcKM0gNxbEU2oAIpM8NCxkVNRMFM2ZFwwx1V5nbv0JNuq6tpyYxchJHZfegpPOU7DO6F7ClwkaaEMkvTiIUmg09QmmErFzCGt6Q-aJMPvPTUOfhbPTfak532Rd0GpHVXb9X2kVqJV3K0x2qnq5CGsrrlKIS25uNMcTmGnQfhgbh4SlTi38e6Pi5xH6UVIkG-_-SDD1N2q6xp3ISLnE5TAbgPuC-Hbk2s",
   ctaFoliage:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDBbTUCDmGAPjadYFvy0i1j-vyXWF2-G9S6U2GuqRtywgRtgzUziRCF1nk1NaD69OFlQceN7UCato6KbjvOOwnVmFAQ1DNf7EC6ogsf12dWguLL8sYhh3cz11AaIQgcN8eGOPBEzC3yNaSPUWlYTauE3ALrGtzKwR-ZsJM0TFALTV6J_Gh4QF3D5t18WuLxrmiEt4IVyWazfb1-wgKrAVXUqwiGZQejFauyQAbZdITcMhZnJXp2nwuM",
-} as const;
-
-export const content = {
-  email: "hello@kaichen.design",
-  navLinks: [
-    { label: "Home", href: "#hero" },
-    { label: "About", href: "#about" },
-    { label: "Case Studies", href: "#cases" },
-    { label: "Capabilities", href: "#capabilities" },
-    { label: "Journal", href: "#journal" },
-    { label: "FAQ", href: "#faq" },
-  ],
 } as const;

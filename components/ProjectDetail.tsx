@@ -1,7 +1,8 @@
 import { ArrowRight, Grid2x2 } from "lucide-react";
 import Reveal from "./Reveal";
+import { projectDetail as copy } from "../lib/content";
 
-/** Project detail spotlight block — Kinetic Liquidity Matrix. */
+/** Project detail spotlight block — EMR Data Sync Engine. */
 export default function ProjectDetail() {
   return (
     <section className="mx-auto w-full max-w-[1440px]" id="about">
@@ -11,17 +12,17 @@ export default function ProjectDetail() {
             <div className="space-y-6 lg:col-span-8">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="rounded-full bg-primary px-3 py-1 font-label-mono-sm text-label-mono-sm font-bold uppercase text-on-primary dark:shadow-[0_0_20px_rgba(224,101,58,0.35)]">
-                  Fintech platform
+                  {copy.chips[0]}
                 </span>
                 <span className="rounded-full bg-surface px-3 py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface dark:border dark:border-white/10 dark:bg-dark-2 dark:text-dark-ink">
-                  Design lead
+                  {copy.chips[1]}
                 </span>
                 <span className="rounded-full bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-secondary-fixed-variant">
-                  2024 deploy
+                  {copy.chips[2]}
                 </span>
               </div>
               <h3 className="font-display-xl text-headline-lg-mobile uppercase leading-tight text-on-surface dark:text-dark-ink sm:text-headline-lg">
-                Kinetic Liquidity Matrix
+                {copy.title}
               </h3>
               <div className="flex items-center gap-4 pt-2">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface text-primary shadow-sm dark:bg-dark-2 dark:text-accent-bright">
@@ -29,28 +30,27 @@ export default function ProjectDetail() {
                 </div>
                 <div>
                   <span className="block font-label-mono-sm text-label-mono-sm font-bold uppercase text-primary dark:text-accent-bright">
-                    Verified system specification
+                    {copy.specLabel}
                   </span>
                   <span className="font-body-sm text-body-sm text-on-surface-variant dark:text-dark-muted">
-                    Real-time orderbook rendering in &lt;1.8ms
+                    {copy.specValue}
                   </span>
                 </div>
               </div>
             </div>
             <div className="space-y-4 rounded-2xl border border-on-surface/10 bg-surface p-6 shadow-sm dark:border-white/10 dark:bg-dark-2 lg:col-span-4">
               <div className="font-label-mono-sm text-label-mono-sm font-bold uppercase tracking-widest text-primary dark:text-accent-bright">
-                [ Art direction note ]
+                {copy.noteLabel}
               </div>
               <p className="font-body-md text-body-md leading-relaxed text-on-surface dark:text-dark-ink">
-                Redefining algorithmic liquidity through visceral clarity and low-latency
-                interaction models, creating sensory confidence in high-stake moments.
+                {copy.noteBody}
               </p>
               <div className="pt-2">
                 <a
                   className="inline-flex items-center gap-2 font-label-mono-md text-label-mono-md font-bold uppercase text-primary transition-colors hover:text-on-surface dark:text-accent-bright dark:hover:text-dark-ink"
                   href="#contact"
                 >
-                  <span>Request Case Study Deck</span>
+                  <span>{copy.cta}</span>
                   <ArrowRight size={14} />
                 </a>
               </div>

@@ -3,6 +3,7 @@ import { Oswald, Plus_Jakarta_Sans, Space_Mono } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import ThemeProvider from "../components/ThemeProvider";
+import { profile } from "../lib/content";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -27,9 +28,8 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kai Chen — Digital Product Designer Portfolio",
-  description:
-    "Principal Interface & Systems Architect based in San Francisco. Shaping high-conviction software, editorial interfaces, and design systems.",
+  title: profile.metaTitle,
+  description: profile.metaDescription,
 };
 
 export const viewport: Viewport = {

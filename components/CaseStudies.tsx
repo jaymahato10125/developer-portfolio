@@ -1,39 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
+import { caseStudies as copy } from "../lib/content";
 
-const cases = [
-  {
-    index: "01 / Fintech infrastructure",
-    title: "Velocity Protocol",
-    tags: ["UX Research", "Design Systems", "Web3 Core"],
-    status: "Live archival",
-    active: true,
-  },
-  {
-    index: "02 / Foundational architecture",
-    title: "Monolith Design System",
-    tags: ["Multi-Brand Architecture", "Token Pipeline", "Figma to React"],
-    status: "Global release",
-    active: false,
-  },
-  {
-    index: "03 / IoT & hardware sensing",
-    title: "Strata Biometric Hardware",
-    tags: ["Mobile App", "Physical-Digital Pairing", "Haptic Labs"],
-    status: "Hardware pilot",
-    active: false,
-  },
-  {
-    index: "04 / High-frequency analytics",
-    title: "Kinetic Fintech Engine",
-    tags: ["Trading Experience", "High-Frequency Data UI", "WebGL Shaders"],
-    status: "Series B raise",
-    active: false,
-  },
-];
-
-/** Dark case-study index — stacked interactive rows. */
+/** Shipped-work index — stacked interactive rows. */
 export default function CaseStudies() {
   return (
     <section
@@ -43,22 +13,19 @@ export default function CaseStudies() {
       <Reveal>
         <div className="flex flex-col justify-between gap-6 pb-12 lg:flex-row lg:items-end">
           <div className="max-w-xl space-y-3">
-            <Eyebrow className="text-primary-fixed-dim">Selected works</Eyebrow>
+            <Eyebrow className="text-primary-fixed-dim">{copy.eyebrow}</Eyebrow>
             <h2 className="font-headline-lg text-headline-lg-mobile uppercase text-inverse-on-surface dark:text-dark-ink sm:text-headline-lg">
-              Case Studies &amp; Product Deployments
+              {copy.heading}
             </h2>
-            <p className="font-body-md text-body-md text-surface-dim">
-              Selected projects spanning fintech, developer tooling, and autonomous systems
-              engineered for enterprise scale.
-            </p>
+            <p className="font-body-md text-body-md text-surface-dim">{copy.body}</p>
           </div>
           <div className="font-label-mono-sm text-label-mono-sm uppercase text-surface-dim">
-            Indexing 04 featured deployments
+            {copy.indexLabel}
           </div>
         </div>
       </Reveal>
       <div className="space-y-4">
-        {cases.map((c, i) => (
+        {copy.cases.map((c, i) => (
           <Reveal key={c.title} delay={i * 0.06}>
             <div className="group flex cursor-pointer flex-col justify-between gap-6 rounded-2xl border border-transparent bg-surface-container-lowest/5 p-6 transition-all hover:bg-surface-container-lowest/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:p-8 md:flex-row md:items-center">
               <div className="space-y-2">

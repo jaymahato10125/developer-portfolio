@@ -4,7 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Crosshair, Menu, X } from "lucide-react";
-import { assets, content } from "../lib/tokens";
+import { assets } from "../lib/tokens";
+import { navLinks, profile } from "../lib/content";
 import ThemeToggle from "./ThemeToggle";
 
 /**
@@ -20,10 +21,10 @@ export default function Navbar() {
         <div className="flex items-center gap-5">
           <a href="#hero" className="group flex items-center gap-3">
             <span className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface transition-colors group-hover:text-primary dark:text-dark-ink dark:group-hover:text-accent-bright">
-              Kai Chen
+              {profile.name}
             </span>
             <span className="hidden font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-on-surface-variant dark:text-dark-muted sm:inline-block">
-              / Dir. Design
+              / Full Stack
             </span>
           </a>
           <div className="hidden items-center gap-2 rounded-full bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-secondary-fixed-variant xl:flex">
@@ -31,7 +32,7 @@ export default function Navbar() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
             </span>
-            <span>Available for Q2/Q3 Projects</span>
+            <span>{profile.availability}</span>
           </div>
         </div>
 
@@ -39,7 +40,7 @@ export default function Navbar() {
           aria-label="Primary"
           className="t-theme hidden items-center gap-1 rounded-full bg-surface-container-low px-2 py-1.5 dark:border dark:border-white/10 dark:bg-dark-2 lg:flex"
         >
-          {content.navLinks.map((link, i) => (
+          {navLinks.map((link, i) => (
             <a
               key={link.label}
               href={link.href}
@@ -58,7 +59,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <a
-            href="#contact"
+            href={`mailto:${profile.email}`}
             className="t-theme hidden items-center justify-center rounded-full bg-primary px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-all hover:bg-secondary dark:shadow-[0_0_24px_rgba(224,101,58,0.35)] dark:hover:bg-primary dark:hover:shadow-[0_0_32px_rgba(224,101,58,0.55)] sm:inline-flex"
           >
             Book a Call
@@ -91,7 +92,7 @@ export default function Navbar() {
             className="mx-4 mb-4 overflow-hidden rounded-2xl bg-surface-container-low dark:border dark:border-white/10 dark:bg-dark-1 lg:hidden"
           >
             <div className="flex flex-col gap-1 p-3">
-              {content.navLinks.map((link) => (
+              {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
@@ -102,7 +103,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href={`mailto:${profile.email}`}
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 font-label-mono-md text-label-mono-md uppercase text-on-primary dark:shadow-[0_0_24px_rgba(224,101,58,0.35)]"
               >
@@ -125,14 +126,14 @@ export function SecondaryBar() {
           <Crosshair size={18} />
         </div>
         <span className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface dark:text-dark-ink">
-          Kai Chen
+          {profile.name}
         </span>
         <div className="hidden items-center gap-2 rounded-full bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-secondary-fixed-variant md:flex">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
           </span>
-          <span>Available now</span>
+          <span>{profile.availability}</span>
         </div>
       </div>
       <nav className="hidden items-center gap-6 font-label-mono-md text-label-mono-md uppercase text-on-surface-variant dark:text-dark-muted lg:flex">
@@ -176,7 +177,7 @@ export function SecondaryBar() {
       <div className="flex items-center gap-3">
         <a
           className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-sm transition-all hover:bg-secondary dark:shadow-[0_0_24px_rgba(224,101,58,0.35)] dark:hover:bg-primary dark:hover:shadow-[0_0_32px_rgba(224,101,58,0.55)]"
-          href="#contact"
+          href={`mailto:${profile.email}`}
         >
           <span>Book a Call</span>
         </a>
