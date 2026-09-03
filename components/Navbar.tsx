@@ -1,0 +1,166 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+import { Crosshair, Menu, X } from "lucide-react";
+import { assets, content } from "../lib/tokens";
+
+/**
+ * Fixed top nav pill — logo, Q2/Q3 availability badge, centered links,
+ * orange "Book a Call" + avatar. Collapses to a mobile menu < lg.
+ */
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="fixed left-frame-padding-mobile right-frame-padding-mobile top-frame-padding-mobile z-50 rounded-t-xl bg-surface/90 shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl lg:left-frame-padding-desktop lg:right-frame-padding-desktop lg:top-frame-padding-desktop">
+      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-4 px-6 lg:px-12">
+        <div className="flex items-center gap-5">
+          <a href="#hero" className="group flex items-center gap-3">
+            <span className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface transition-colors group-hover:text-primary">
+              Kai Chen
+            </span>
+            <span className="hidden font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-on-surface-variant sm:inline-block">
+              / Dir. Design
+            </span>
+          </a>
+          <div className="hidden items-center gap-2 rounded-full bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-secondary-fixed-variant xl:flex">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
+            </span>
+            <span>Available for Q2/Q3 Projects</span>
+          </div>
+        </div>
+
+        <nav
+          aria-label="Primary"
+          className="hidden items-center gap-1 rounded-full bg-surface-container-low px-2 py-1.5 lg:flex"
+        >
+          {content.navLinks.map((link, i) => (
+            <a
+              key={link.label}
+              href={link.href}
+              aria-current={i === 0 ? "page" : undefined}
+              className={
+                i === 0
+                  ? "rounded-full bg-surface-container-highest px-4 py-1.5 font-label-mono-md text-label-mono-md font-bold uppercase text-on-surface shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-colors"
+                  : "rounded-full px-4 py-1.5 font-label-mono-md text-label-mono-md uppercase text-on-surface-variant transition-colors hover:bg-surface-container hover:text-on-surface"
+              }
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <a
+            href="#contact"
+            className="hidden items-center justify-center rounded-full bg-primary px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-all hover:bg-secondary sm:inline-flex"
+          >
+            Book a Call
+          </a>
+          <Image
+            alt="Profile"
+            src={assets.avatar}
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-full object-cover"
+          />
+          <button
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-low text-on-surface lg:hidden"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            aria-label="Mobile"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="mx-4 mb-4 overflow-hidden rounded-2xl bg-surface-container-low lg:hidden"
+          >
+            <div className="flex flex-col gap-1 p-3">
+              {content.navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-xl px-4 py-3 font-label-mono-md text-label-mono-md uppercase text-on-surface transition-colors hover:bg-surface-container"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 font-label-mono-md text-label-mono-md uppercase text-on-primary"
+              >
+                Book a Call
+              </a>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
+
+/** Scrolling secondary pill bar rendered at the top of the dot-grid (matches Stitch). */
+export function SecondaryBar() {
+  return (
+    <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 rounded-full bg-surface-container-low px-5 py-3 shadow-sm">
+      <div className="flex items-center gap-3">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface text-primary shadow-sm">
+          <Crosshair size={18} />
+        </div>
+        <span className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface">
+          Kai Chen
+        </span>
+        <div className="hidden items-center gap-2 rounded-full bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-secondary-fixed-variant md:flex">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
+          </span>
+          <span>Available now</span>
+        </div>
+      </div>
+      <nav className="hidden items-center gap-6 font-label-mono-md text-label-mono-md uppercase text-on-surface-variant lg:flex">
+        <a className="transition-colors hover:text-primary" href="#hero">
+          Home
+        </a>
+        <a className="transition-colors hover:text-primary" href="#about">
+          About
+        </a>
+        <a className="transition-colors hover:text-primary" href="#cases">
+          Case Study
+        </a>
+        <a className="transition-colors hover:text-primary" href="#journal">
+          Journal
+        </a>
+        <a className="transition-colors hover:text-primary" href="#faq">
+          FAQ
+        </a>
+        <a className="transition-colors hover:text-primary" href="#contact">
+          Contact
+        </a>
+      </nav>
+      <div className="flex items-center gap-3">
+        <a
+          className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-sm transition-all hover:bg-secondary"
+          href="#contact"
+        >
+          <span>Book a Call</span>
+        </a>
+      </div>
+    </div>
+  );
+}
