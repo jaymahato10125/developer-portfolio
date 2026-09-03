@@ -10,24 +10,26 @@ export default function Hero() {
     <section className="relative mx-auto w-full max-w-[1440px] pt-4 lg:pt-8" id="hero">
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
         <Reveal className="flex flex-col gap-4 lg:col-span-7">
-          <Eyebrow className="text-primary">Principal Interface &amp; Systems Architect</Eyebrow>
+          <Eyebrow className="text-primary dark:text-accent-bright">
+            Principal Interface &amp; Systems Architect
+          </Eyebrow>
           <div className="flex flex-wrap items-baseline gap-4 sm:flex-nowrap sm:gap-6">
-            <h1 className="font-display-xl text-display-xl-mobile uppercase tracking-tight text-on-surface sm:text-display-xl">
+            <h1 className="font-display-xl text-display-xl-mobile uppercase tracking-tight text-on-surface dark:text-dark-ink sm:text-display-xl">
               I&rsquo;m Kai Chen
             </h1>
-            <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-surface-container-highest shadow-md sm:h-28 sm:w-28">
+            <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-surface-container-highest shadow-md dark:border dark:border-white/10 dark:bg-dark-2 sm:h-28 sm:w-28">
               <Image
                 alt="Kai Chen portrait in design studio"
                 src={assets.portrait}
                 width={224}
                 height={224}
-                className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0 dark:brightness-[.94] dark:saturate-[.92]"
                 priority
               />
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-3 pt-2">
-            <span className="rounded bg-surface-container px-3 py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant">
+            <span className="rounded bg-surface-container px-3 py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant dark:border dark:border-white/10 dark:bg-dark-2 dark:text-dark-muted">
               Loc: San Francisco, CA
             </span>
             <span className="rounded bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm uppercase text-on-secondary-fixed-variant">

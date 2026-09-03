@@ -8,7 +8,7 @@ export default function CTABanner() {
   return (
     <section className="mx-auto w-full max-w-[1440px]" id="contact">
       <Reveal>
-        <div className="relative overflow-hidden rounded-3xl bg-secondary p-8 text-on-secondary shadow-xl sm:p-14 lg:p-20">
+        <div className="relative overflow-hidden rounded-3xl border border-on-surface/10 bg-secondary p-8 text-on-secondary shadow-xl dark:border-white/10 sm:p-14 lg:p-20">
           <div className="pointer-events-none absolute -bottom-16 -right-16 h-96 w-96 overflow-hidden rounded-full opacity-30 blur-xl">
             <div
               className="h-full w-full bg-cover bg-center"
@@ -26,13 +26,13 @@ export default function CTABanner() {
             <h2 className="font-display-xl text-headline-lg-mobile uppercase leading-none tracking-tight sm:text-display-xl">
               Let&rsquo;s build something great together
             </h2>
-            <p className="max-w-xl font-body-xl text-body-xl text-secondary-fixed-dim">
+            <p className="max-w-xl font-body-xl text-body-xl text-secondary-fixed-dim dark:text-[#d9e9dc]">
               Currently booking select product design partnerships for Q2 &amp; Q3. Available for
               high-velocity venture studios, stealth startups, and mature platforms.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <a
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-md transition-all hover:bg-on-surface"
+                className="t-theme inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-md transition-all hover:bg-on-surface dark:shadow-[0_0_36px_rgba(224,101,58,0.45)] dark:hover:bg-primary dark:hover:shadow-[0_0_48px_rgba(224,101,58,0.6)]"
                 href={`mailto:${content.email}`}
               >
                 <span>Book a Discovery Call</span>
