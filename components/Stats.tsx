@@ -1,7 +1,7 @@
 import { BadgeCheck, Gauge } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
-import { stats as copy } from "../lib/content";
+import { stats as copy } from "../lib/company";
 
 const cards = [
   {
@@ -9,7 +9,7 @@ const cards = [
     valueClass: "text-on-surface dark:text-dark-ink",
     badge: (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-container px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-surface dark:bg-dark-2 dark:text-dark-ink">
-        <BadgeCheck size={14} className="text-secondary" />
+        <BadgeCheck size={14} className="text-secondary" aria-hidden />
         <span>{copy.cards[0].badge}</span>
       </span>
     ),
@@ -28,17 +28,17 @@ const cards = [
     valueClass: "text-on-surface dark:text-dark-ink",
     badge: (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-secondary-fixed-variant">
-        <Gauge size={14} className="text-secondary" />
+        <Gauge size={14} className="text-secondary" aria-hidden />
         <span>{copy.cards[2].badge}</span>
       </span>
     ),
   },
 ];
 
-/** Stats strip — measured outcomes. */
+/** Outcomes strip — business-level results, not personal tenure. */
 export default function Stats() {
   return (
-    <section className="mx-auto w-full max-w-[1440px] py-6">
+    <section aria-label="Outcomes" className="mx-auto w-full max-w-[1440px] py-6" id="outcomes">
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
         <Reveal className="space-y-4 lg:col-span-4">
           <Eyebrow className="text-primary dark:text-accent-bright">{copy.eyebrow}</Eyebrow>
@@ -57,11 +57,11 @@ export default function Stats() {
                   <span className="font-label-mono-sm text-label-mono-sm font-bold uppercase tracking-wider text-primary dark:text-accent-bright">
                     {s.kicker}
                   </span>
-                  <span className={`h-2.5 w-2.5 rounded-full ${cards[i].dot}`} />
+                  <span className={`h-2.5 w-2.5 rounded-full ${cards[i]!.dot}`} aria-hidden />
                 </div>
                 <div className="my-4">
                   <div
-                    className={`font-display-xl text-headline-lg leading-none ${cards[i].valueClass}`}
+                    className={`font-display-xl text-headline-lg leading-none ${cards[i]!.valueClass}`}
                   >
                     {s.value}
                   </div>
@@ -69,7 +69,7 @@ export default function Stats() {
                     {s.body}
                   </p>
                 </div>
-                {cards[i].badge}
+                {cards[i]!.badge}
               </div>
             </Reveal>
           ))}

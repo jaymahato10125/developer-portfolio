@@ -5,16 +5,25 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
-import { assets } from "../lib/tokens";
-import { testimonials as copy } from "../lib/content";
+import { testimonials as copy } from "../lib/company";
 
-/** Testimonials — carousel with engagement summary card. */
+/** Client testimonials — carousel with typical-engagement summary card. */
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
+  if (!copy.enabled) return null;
   const t = copy.quotes[index % copy.quotes.length]!;
+  const initials = t.name
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("");
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] py-6">
+    <section
+      aria-label="Client testimonials"
+      className="mx-auto w-full max-w-[1440px] py-6"
+      id="testimonials"
+    >
       <div className="t-theme rounded-3xl border border-on-surface/10 bg-surface-container-low p-8 shadow-sm dark:border-white/10 dark:bg-dark-1 sm:p-12 lg:p-16">
         <Reveal>
           <div className="flex flex-col justify-between gap-6 pb-8 md:flex-row md:items-end">
@@ -24,30 +33,35 @@ export default function Testimonials() {
                 {copy.heading}
               </h2>
               <p className="font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant dark:text-dark-faint">
-                {copy.placeholderNote}
+                {copy.note}
               </p>
             </div>
             <div className="flex items-center gap-3">
               <button
+                type="button"
                 aria-label="Previous review"
                 onClick={() => setIndex((i) => (i === 0 ? copy.quotes.length - 1 : i - 1))}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-on-surface/10 bg-surface text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary dark:border-white/10 dark:bg-dark-2 dark:text-dark-ink dark:hover:border-primary dark:hover:bg-primary dark:hover:text-on-primary"
               >
-                <ArrowLeft size={18} />
+                <ArrowLeft size={18} aria-hidden />
               </button>
               <button
+                type="button"
                 aria-label="Next review"
                 onClick={() => setIndex((i) => (i === copy.quotes.length - 1 ? 0 : i + 1))}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-on-surface/10 bg-surface text-on-surface shadow-sm transition-all hover:bg-primary hover:text-on-primary dark:border-white/10 dark:bg-dark-2 dark:text-dark-ink dark:hover:border-primary dark:hover:bg-primary dark:hover:text-on-primary"
               >
-                <ArrowRight size={18} />
+                <ArrowRight size={18} aria-hidden />
               </button>
             </div>
           </div>
         </Reveal>
         <div className="grid grid-cols-1 items-center gap-8 pt-4 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-8">
-            <span className="block select-none font-display-xl text-display-xl leading-none text-primary dark:text-accent-bright">
+            <span
+              aria-hidden
+              className="block select-none font-display-xl text-display-xl leading-none text-primary dark:text-accent-bright"
+            >
               &ldquo;
             </span>
             <AnimatePresence mode="wait">
@@ -62,13 +76,11 @@ export default function Testimonials() {
                   {t.quote}
                 </p>
                 <div className="flex items-center gap-4 pt-4">
-                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-surface-container-highest shadow-sm dark:bg-dark-2">
-                    <div
-                      className="h-full w-full bg-cover bg-center dark:brightness-[.92]"
-                      style={{ backgroundImage: `url('${assets.testimonialPortrait}')` }}
-                      role="img"
-                      aria-label="Portrait of testimonial author"
-                    />
+                  <div
+                    aria-hidden
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-carbon font-headline-md text-body-xl text-cream dark:bg-dark-ink dark:text-dark-base"
+                  >
+                    {initials}
                   </div>
                   <div>
                     <h4 className="font-headline-md text-body-xl uppercase leading-tight text-on-surface dark:text-dark-ink">

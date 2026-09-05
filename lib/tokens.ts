@@ -5,7 +5,7 @@
  *
  * Edit palette here; components reference Tailwind color names (e.g. bg-surface, text-primary)
  * so tweaks propagate everywhere. Do not hardcode hex values in components.
- * Site copy lives in `lib/content.ts`, not here.
+ * Site copy lives in `lib/company.ts`, not here.
  */
 
 export const colors = {
@@ -96,6 +96,9 @@ export const colors = {
   "dark-muted": "#b9ac9c",
   "dark-faint": "#8a7f70",
   "accent-bright": "#e0653a",
+
+  // Obsidian brand anchor — semantic alias of the near-black base.
+  obsidian: "#0b0b0a",
 } as const;
 
 export const spacing = {
@@ -190,16 +193,8 @@ export const radii = {
   full: "9999px",
 } as const;
 
-/** Placeholder imagery straight from the Stitch export — swap with real CV/photos later */
+/** Local brand imagery — no remote hosts. Company site uses CSS/SVG, not photos. */
 export const assets = {
-  portrait:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuAJu1NBpNfvBrepuYSGkRxCUdEpwnXPSPjFu47zEbqNwFYADSxHI05y6CshCJTNHF4Bj3Lrccw-6wmjmv3qgXiMCxxsfd4HXNzk7asOzDA74z0wfc4WUeYreuXSuHB3OFy-h8IznMUoEfSdS2XpcIYr9Kx8mKOINZM-avSIrVCHRpq-edMKgEu_k2A2veCe7XZYkhdWZ5RiEoRDKqa10fysGV7Wc4teqxQmTXu_98w7tsInipMTS-M5",
-  avatar:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDdIwNDcd2O8YKrWJlHt_K8QSewYig-zgB6e8LZxyY2dbknanmkVEMYTo8zvGAWGVUFk97ZHGhw-T4w0ljMjzKDGsNsZ94rakiBlQajKq4oySk8Oy9l0aD3ny3nwfsb0oUv4UlidjOqsoicmUWnt5pFp3MxNLP0uv53qRyUl6yAqPhdQy02DiIJmsVvpRUp65evnALepxs0r3QC0wW5HAvK3HG1QwTI3GROEf9aeXVp6QZHNDmMAEVy",
-  journalWoodland:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDiE_RTiJjW8HCPUVosrbXqE7MREvllXGfimPLrw42mW9IDfiFWBmru-cgcxbhsrcTd81NdS_SZuxojSIJOf-_ityOoHNPV_rpx62r1iOvb78NaFxfnE3hjgovUlmKWdSoStXLY7aXIGgFwNNBB50zC_n0EACCERk1d_cfh65R4uf_v7d4sid7_wserc8ZYw-1W3KX5EwYfFI48cHMn0azB1nRcQOvnlK47ZUXS-InXpHI0eJPa9aVR",
-  testimonialPortrait:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuAzVoig85tSGhybtxQF2e7ylcKM0gNxbEU2oAIpM8NCxkVNRMFM2ZFwwx1V5nbv0JNuq6tpyYxchJHZfegpPOU7DO6F7ClwkaaEMkvTiIUmg09QmmErFzCGt6Q-aJMPvPTUOfhbPTfak532Rd0GpHVXb9X2kVqJV3K0x2qnq5CGsrrlKIS25uNMcTmGnQfhgbh4SlTi38e6Pi5xH6UVIkG-_-SDD1N2q6xp3ISLnE5TAbgPuC-Hbk2s",
-  ctaFoliage:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDBbTUCDmGAPjadYFvy0i1j-vyXWF2-G9S6U2GuqRtywgRtgzUziRCF1nk1NaD69OFlQceN7UCato6KbjvOOwnVmFAQ1DNf7EC6ogsf12dWguLL8sYhh3cz11AaIQgcN8eGOPBEzC3yNaSPUWlYTauE3ALrGtzKwR-ZsJM0TFALTV6J_Gh4QF3D5t18WuLxrmiEt4IVyWazfb1-wgKrAVXUqwiGZQejFauyQAbZdITcMhZnJXp2nwuM",
+  logo: "/logo.svg",
+  ogCover: "/og-cover.svg",
 } as const;

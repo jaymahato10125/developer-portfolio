@@ -1,12 +1,12 @@
-import { Database, Monitor, Server } from "lucide-react";
+import { Globe, Layers, Wrench } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
-import { capabilities as copy } from "../lib/content";
+import { capabilities as copy } from "../lib/company";
 
-const icons = [Monitor, Server, Database];
+const icons = [Globe, Layers, Wrench];
 const tiles = copy.tiles.map((t, i) => ({ ...t, icon: icons[i]! }));
 
-/** Capabilities — stack and engineering tiles. */
+/** Technologies — stacks and tools behind client delivery. */
 export default function Capabilities() {
   return (
     <section className="mx-auto w-full max-w-[1440px] py-6" id="capabilities">
@@ -39,7 +39,7 @@ export default function Capabilities() {
                       : "flex h-14 w-14 items-center justify-center rounded-2xl bg-surface text-primary shadow-sm transition-transform group-hover:scale-105 dark:bg-dark-2 dark:text-accent-bright"
                   }
                 >
-                  <t.icon size={26} />
+                  <t.icon size={26} aria-hidden />
                 </div>
                 <div className="space-y-2">
                   <h3
@@ -70,7 +70,7 @@ export default function Capabilities() {
                       : "block font-label-mono-sm text-label-mono-sm font-bold uppercase tracking-wider text-primary dark:text-accent-bright"
                   }
                 >
-                  Deliverables:
+                  Includes:
                 </span>
                 <div
                   className={

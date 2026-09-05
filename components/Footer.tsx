@@ -1,22 +1,23 @@
 import Reveal from "./Reveal";
-import { footer as copy, profile } from "../lib/content";
+import BrandMark from "./BrandMark";
+import { company, footer as copy } from "../lib/company";
 
-/** Bespoke footer with watermark + outer quarterly-status footer (matches Stitch). */
+/** Bespoke footer with watermark + outer status footer. */
 export default function Footer() {
+  const network = [
+    { label: "Website →", href: company.url },
+    { label: "Email →", href: `mailto:${company.email}` },
+    { label: "Phone →", href: company.phoneHref },
+    { label: "WhatsApp →", href: company.whatsapp },
+  ];
+
   return (
     <>
       <footer className="mx-auto w-full max-w-[1440px] space-y-12 pb-6 pt-12">
         <Reveal>
           <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-12">
             <div className="space-y-4 md:col-span-5">
-              <div className="flex items-center gap-3">
-                <span className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface dark:text-dark-ink">
-                  {profile.name}
-                </span>
-                <span className="font-label-mono-sm text-label-mono-sm uppercase text-primary dark:text-accent-bright">
-                  / Developer
-                </span>
-              </div>
+              <BrandMark />
               <p className="max-w-sm font-body-md text-body-md text-on-surface-variant dark:text-dark-muted">
                 {copy.brandBlurb}
               </p>
@@ -24,98 +25,46 @@ export default function Footer() {
                 {copy.locations}
               </div>
             </div>
-            <div className="space-y-3 md:col-span-2">
+            <nav aria-label="Footer directory" className="space-y-3 md:col-span-2">
               <span className="block font-label-mono-md text-label-mono-md uppercase tracking-widest text-primary dark:text-accent-bright">
                 Directory
               </span>
               <ul className="space-y-2 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant dark:text-dark-muted">
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#hero"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#cases"
-                  >
-                    Selected Works
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#capabilities"
-                  >
-                    Capabilities
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#journal"
-                  >
-                    Journal
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#faq"
-                  >
-                    About &amp; FAQ
-                  </a>
-                </li>
+                {copy.directory.map((d) => (
+                  <li key={d.label}>
+                    <a
+                      className="transition-colors hover:text-primary dark:hover:text-accent-bright"
+                      href={d.href}
+                    >
+                      {d.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
-            </div>
-            <div className="space-y-3 md:col-span-2">
+            </nav>
+            <nav aria-label="Footer company" className="space-y-3 md:col-span-2">
               <span className="block font-label-mono-md text-label-mono-md uppercase tracking-widest text-primary dark:text-accent-bright">
-                Colophon
+                Company
               </span>
               <ul className="space-y-2 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant dark:text-dark-muted">
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    Colophon 2026
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    Type: Oswald / Mono
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-                    href="#"
-                  >
-                    Design Tokens
-                  </a>
-                </li>
+                {copy.companyCol.map((d) => (
+                  <li key={d.label}>
+                    <a
+                      className="transition-colors hover:text-primary dark:hover:text-accent-bright"
+                      href={d.href}
+                    >
+                      {d.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
-            </div>
+            </nav>
             <div className="space-y-3 md:col-span-3">
               <span className="block font-label-mono-md text-label-mono-md uppercase tracking-widest text-primary dark:text-accent-bright">
-                Network
+                Contact
               </span>
               <ul className="space-y-2 font-label-mono-sm text-label-mono-sm uppercase text-on-surface-variant dark:text-dark-muted">
-                {copy.network.map((n) => (
+                {network.map((n) => (
                   <li key={n.label}>
                     <a
                       className="transition-colors hover:text-primary dark:hover:text-accent-bright"
@@ -130,8 +79,8 @@ export default function Footer() {
           </div>
         </Reveal>
         <div className="w-full select-none overflow-hidden py-4 text-center" aria-hidden>
-          <div className="text-outline-watermark font-display-xl text-[64px] font-bold uppercase leading-none tracking-tight sm:text-[120px] lg:text-[180px]">
-            Jay Mahato
+          <div className="text-outline-watermark font-display-xl text-[52px] font-bold uppercase leading-none tracking-[0.08em] sm:text-[110px] lg:text-[168px]">
+            Obsidian
           </div>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 pt-4 font-label-mono-sm text-label-mono-sm text-on-surface-variant dark:text-dark-muted sm:flex-row">
@@ -146,16 +95,14 @@ export default function Footer() {
   );
 }
 
-/** Outer status footer — sits at the bottom of the cream card (matches Stitch). */
+/** Outer status footer — sits at the bottom of the cream card. */
 export function SiteFooter() {
   return (
     <footer className="t-theme mt-auto w-full bg-surface-container-low dark:border-t dark:border-white/10 dark:bg-dark-1">
       <div className="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
         <div className="grid grid-cols-1 items-start gap-card-gap md:grid-cols-12">
           <div className="space-y-4 md:col-span-5">
-            <div className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface dark:text-dark-ink">
-              {profile.name}
-            </div>
+            <BrandMark />
             <p className="max-w-md font-body-md text-body-md text-on-surface-variant dark:text-dark-muted">
               {copy.brandBlurb}
             </p>
@@ -164,33 +111,27 @@ export function SiteFooter() {
               <span>{copy.locations}</span>
             </div>
           </div>
-          <div className="space-y-3 md:col-span-3">
+          <nav aria-label="Site directory" className="space-y-3 md:col-span-3">
             <div className="font-label-mono-md text-label-mono-md uppercase tracking-widest text-primary dark:text-accent-bright">
               Directory
             </div>
             <ul className="space-y-2 font-label-mono-sm text-label-mono-sm uppercase">
-              {[
-                "Index / Overview",
-                "Featured Case Studies",
-                "Core Capabilities",
-                "Notes & Writing",
-                "Working Together FAQ",
-              ].map((l) => (
+              {copy.directory.map((l) => (
                 <li
-                  key={l}
+                  key={l.label}
                   className="flex items-center gap-2 text-on-surface-variant dark:text-dark-muted"
                 >
                   <span className="text-primary dark:text-accent-bright">•</span>
                   <a
                     className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
-                    href="#"
+                    href={l.href}
                   >
-                    {l}
+                    {l.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
           <div className="space-y-4 md:col-span-4">
             <div className="font-label-mono-md text-label-mono-md uppercase tracking-widest text-primary dark:text-accent-bright">
               {copy.statusTitle}
@@ -206,7 +147,7 @@ export function SiteFooter() {
               <div className="pt-2">
                 <a
                   className="inline-flex items-center gap-1 font-label-mono-sm text-label-mono-sm font-bold uppercase text-primary transition-colors hover:text-on-surface dark:text-accent-bright dark:hover:text-dark-ink"
-                  href={`mailto:${profile.email}`}
+                  href="#contact"
                 >
                   {copy.statusCta}
                 </a>
@@ -223,21 +164,21 @@ export function SiteFooter() {
           <div className="flex items-center gap-6">
             <a
               className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
-              href={profile.github}
+              href="#contact"
             >
-              GitHub
+              Start a Project
             </a>
             <a
               className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
-              href={profile.linkedin}
-            >
-              LinkedIn
-            </a>
-            <a
-              className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
-              href={`mailto:${profile.email}`}
+              href={`mailto:${company.email}`}
             >
               Email
+            </a>
+            <a
+              className="transition-colors hover:text-on-surface dark:hover:text-dark-ink"
+              href={company.whatsapp}
+            >
+              WhatsApp
             </a>
           </div>
         </div>

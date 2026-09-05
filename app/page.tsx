@@ -1,21 +1,24 @@
 import Navbar, { SecondaryBar } from "../components/Navbar";
 import Hero from "../components/Hero";
-import FeaturedWork from "../components/FeaturedWork";
+import TrustBar from "../components/TrustBar";
+import Services from "../components/Services";
 import Stats from "../components/Stats";
 import CaseStudies from "../components/CaseStudies";
 import ProjectDetail from "../components/ProjectDetail";
+import Process from "../components/Process";
 import Capabilities from "../components/Capabilities";
-import Journal from "../components/Journal";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import CTABanner from "../components/CTABanner";
+import ContactSection from "../components/ContactSection";
+import StickyCTA from "../components/StickyCTA";
 import Footer, { SiteFooter } from "../components/Footer";
 
 /**
- * Page scaffold mirrors the Stitch export order exactly:
- * fixed nav → dot-grid wrapper → secondary bar → hero → featured → stats →
- * dark cases → project detail → capabilities → dark journal → testimonials →
- * FAQ → CTA → bespoke footer → outer status footer.
+ * Company single-page scaffold:
+ * fixed nav → dot-grid wrapper → secondary bar → hero → trust → services →
+ * outcomes → work → spotlight → process → technologies → testimonials →
+ * FAQ → CTA → contact → bespoke footer → outer status footer.
  */
 export default function Page() {
   return (
@@ -26,20 +29,23 @@ export default function Page() {
           <div className="bg-dot-grid relative w-full space-y-16 px-4 py-8 sm:px-8 lg:space-y-24 lg:px-12">
             <SecondaryBar />
             <Hero />
-            <FeaturedWork />
+            <TrustBar />
+            <Services />
             <Stats />
             <CaseStudies />
             <ProjectDetail />
+            <Process />
             <Capabilities />
-            <Journal />
             <Testimonials />
             <FAQ />
             <CTABanner />
+            <ContactSection />
             <Footer />
           </div>
         </div>
       </main>
       <SiteFooter />
+      <StickyCTA />
     </div>
   );
 }

@@ -6,9 +6,9 @@ import { ChevronDown, MessageCircle } from "lucide-react";
 import { cn } from "../lib/cn";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
-import { faq as copy } from "../lib/content";
+import { faq as copy } from "../lib/company";
 
-/** FAQ accordion — single-open behavior. */
+/** FAQ accordion — single-open behavior, buyer questions. */
 export default function FAQ() {
   const [open, setOpen] = useState(0);
 
@@ -29,7 +29,7 @@ export default function FAQ() {
               href="#contact"
             >
               <span>{copy.cta}</span>
-              <MessageCircle size={14} />
+              <MessageCircle size={14} aria-hidden />
             </a>
           </div>
         </Reveal>
@@ -40,6 +40,7 @@ export default function FAQ() {
               <Reveal key={f.q} delay={i * 0.05}>
                 <div className="t-theme rounded-2xl border border-on-surface/10 bg-surface-container-low p-6 shadow-sm transition-all dark:border-white/10 dark:bg-dark-1">
                   <button
+                    type="button"
                     onClick={() => setOpen(isOpen ? -1 : i)}
                     aria-expanded={isOpen}
                     className="flex w-full items-center justify-between gap-4 text-left"
@@ -53,7 +54,7 @@ export default function FAQ() {
                         isOpen && "rotate-180"
                       )}
                     >
-                      <ChevronDown size={18} />
+                      <ChevronDown size={18} aria-hidden />
                     </span>
                   </button>
                   <AnimatePresence initial={false}>

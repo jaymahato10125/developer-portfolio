@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { Crosshair, Menu, X } from "lucide-react";
-import { assets } from "../lib/tokens";
-import { navLinks, profile } from "../lib/content";
+import { ArrowRight, Menu, X } from "lucide-react";
+import { company, navLinks } from "../lib/company";
+import BrandMark from "./BrandMark";
 import ThemeToggle from "./ThemeToggle";
 
 /**
- * Fixed top nav pill — logo, Q2/Q3 availability badge, centered links,
- * orange "Book a Call" + avatar. Collapses to a mobile menu < lg.
+ * Fixed top nav pill — brand lockup, capacity badge, centered links,
+ * "Start a Project" CTA. Collapses to a mobile menu < lg.
  */
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -19,20 +18,13 @@ export default function Navbar() {
     <header className="t-theme fixed left-frame-padding-mobile right-frame-padding-mobile top-frame-padding-mobile z-50 rounded-t-xl bg-surface/90 shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl dark:border-b dark:border-white/10 dark:bg-dark-base/85 lg:left-frame-padding-desktop lg:right-frame-padding-desktop lg:top-frame-padding-desktop">
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-4 px-6 lg:px-12">
         <div className="flex items-center gap-5">
-          <a href="#hero" className="group flex items-center gap-3">
-            <span className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface transition-colors group-hover:text-primary dark:text-dark-ink dark:group-hover:text-accent-bright">
-              {profile.name}
-            </span>
-            <span className="hidden font-label-mono-sm text-label-mono-sm uppercase tracking-wider text-on-surface-variant dark:text-dark-muted sm:inline-block">
-              / Full Stack
-            </span>
-          </a>
+          <BrandMark />
           <div className="hidden items-center gap-2 rounded-full bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-secondary-fixed-variant xl:flex">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
             </span>
-            <span>{profile.availability}</span>
+            <span>{company.availability}</span>
           </div>
         </div>
 
@@ -59,20 +51,15 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <a
-            href={`mailto:${profile.email}`}
-            className="t-theme hidden items-center justify-center rounded-full bg-primary px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-all hover:bg-secondary dark:shadow-[0_0_24px_rgba(224,101,58,0.35)] dark:hover:bg-primary dark:hover:shadow-[0_0_32px_rgba(224,101,58,0.55)] sm:inline-flex"
+            href="#contact"
+            className="t-theme hidden items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-all hover:bg-secondary dark:shadow-[0_0_24px_rgba(224,101,58,0.35)] dark:hover:bg-primary dark:hover:shadow-[0_0_32px_rgba(224,101,58,0.55)] sm:inline-flex"
           >
-            Book a Call
+            <span>Start a Project</span>
+            <ArrowRight size={14} aria-hidden />
           </a>
-          <Image
-            alt="Profile"
-            src={assets.avatar}
-            width={32}
-            height={32}
-            className="h-8 w-8 rounded-full object-cover dark:brightness-[.94]"
-          />
           <button
             aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-low text-on-surface dark:border dark:border-white/10 dark:bg-dark-2 dark:text-dark-ink lg:hidden"
           >
@@ -103,11 +90,19 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href={`mailto:${profile.email}`}
+                href="#contact"
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 font-label-mono-md text-label-mono-md uppercase text-on-primary dark:shadow-[0_0_24px_rgba(224,101,58,0.35)]"
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 font-label-mono-md text-label-mono-md uppercase text-on-primary dark:shadow-[0_0_24px_rgba(224,101,58,0.35)]"
               >
-                Book a Call
+                <span>Start a Project</span>
+                <ArrowRight size={14} aria-hidden />
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center justify-center rounded-full border border-on-surface/10 px-5 py-3 font-label-mono-md text-label-mono-md uppercase text-on-surface dark:border-white/10 dark:text-dark-ink"
+              >
+                Get a Free Consultation
               </a>
             </div>
           </motion.nav>
@@ -117,49 +112,41 @@ export default function Navbar() {
   );
 }
 
-/** Scrolling secondary pill bar rendered at the top of the dot-grid (matches Stitch). */
+/** Scrolling secondary pill bar rendered at the top of the dot-grid. */
 export function SecondaryBar() {
   return (
     <div className="t-theme mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 rounded-full bg-surface-container-low px-5 py-3 shadow-sm dark:border dark:border-white/10 dark:bg-dark-1">
       <div className="flex items-center gap-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface text-primary shadow-sm dark:bg-dark-2 dark:text-accent-bright">
-          <Crosshair size={18} />
-        </div>
-        <span className="font-headline-md text-headline-md uppercase tracking-tight text-on-surface dark:text-dark-ink">
-          {profile.name}
-        </span>
+        <BrandMark compact />
         <div className="hidden items-center gap-2 rounded-full bg-secondary-container px-3 py-1 font-label-mono-sm text-label-mono-sm text-on-secondary-fixed-variant md:flex">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
           </span>
-          <span>{profile.availability}</span>
+          <span>{company.availability}</span>
         </div>
       </div>
-      <nav className="hidden items-center gap-6 font-label-mono-md text-label-mono-md uppercase text-on-surface-variant dark:text-dark-muted lg:flex">
+      <nav
+        aria-label="Secondary"
+        className="hidden items-center gap-6 font-label-mono-md text-label-mono-md uppercase text-on-surface-variant dark:text-dark-muted lg:flex"
+      >
         <a
           className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-          href="#hero"
+          href="#services"
         >
-          Home
+          Services
         </a>
         <a
           className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-          href="#about"
+          href="#work"
         >
-          About
+          Work
         </a>
         <a
           className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-          href="#cases"
+          href="#process"
         >
-          Case Study
-        </a>
-        <a
-          className="transition-colors hover:text-primary dark:hover:text-accent-bright"
-          href="#journal"
-        >
-          Journal
+          Process
         </a>
         <a
           className="transition-colors hover:text-primary dark:hover:text-accent-bright"
@@ -177,9 +164,9 @@ export function SecondaryBar() {
       <div className="flex items-center gap-3">
         <a
           className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 font-label-mono-md text-label-mono-md uppercase tracking-wider text-on-primary shadow-sm transition-all hover:bg-secondary dark:shadow-[0_0_24px_rgba(224,101,58,0.35)] dark:hover:bg-primary dark:hover:shadow-[0_0_32px_rgba(224,101,58,0.55)]"
-          href={`mailto:${profile.email}`}
+          href="#contact"
         >
-          <span>Book a Call</span>
+          <span>Get Free Consultation</span>
         </a>
       </div>
     </div>

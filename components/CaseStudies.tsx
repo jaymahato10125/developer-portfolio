@@ -1,14 +1,14 @@
 import { ArrowUpRight } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 import Reveal from "./Reveal";
-import { caseStudies as copy } from "../lib/content";
+import { caseStudies as copy } from "../lib/company";
 
-/** Shipped-work index — stacked interactive rows. */
+/** Client-work index — service-led representative engagements. */
 export default function CaseStudies() {
   return (
     <section
       className="t-theme mx-auto w-full max-w-[1440px] rounded-3xl bg-inverse-surface p-8 text-inverse-on-surface shadow-xl dark:border dark:border-white/10 dark:bg-dark-1 dark:text-dark-ink sm:p-12 lg:p-16"
-      id="cases"
+      id="work"
     >
       <Reveal>
         <div className="flex flex-col justify-between gap-6 pb-12 lg:flex-row lg:items-end">
@@ -27,7 +27,11 @@ export default function CaseStudies() {
       <div className="space-y-4">
         {copy.cases.map((c, i) => (
           <Reveal key={c.title} delay={i * 0.06}>
-            <div className="group flex cursor-pointer flex-col justify-between gap-6 rounded-2xl border border-transparent bg-surface-container-lowest/5 p-6 transition-all hover:bg-surface-container-lowest/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:p-8 md:flex-row md:items-center">
+            <a
+              href="#contact"
+              aria-label={`${c.title} — start a similar project`}
+              className="group flex flex-col justify-between gap-6 rounded-2xl border border-transparent bg-surface-container-lowest/5 p-6 transition-all hover:bg-surface-container-lowest/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:p-8 md:flex-row md:items-center"
+            >
               <div className="space-y-2">
                 <span className="block font-label-mono-sm text-label-mono-sm font-bold uppercase tracking-widest text-primary dark:text-accent-bright">
                   {c.index}
@@ -50,17 +54,17 @@ export default function CaseStudies() {
                 <span className="hidden font-label-mono-sm text-label-mono-sm uppercase text-secondary-fixed-dim dark:text-dark-faint sm:inline">
                   {c.status}
                 </span>
-                <div
+                <span
                   className={
                     c.active
                       ? "flex h-12 w-12 items-center justify-center rounded-full bg-primary text-on-primary shadow-sm transition-transform group-hover:translate-x-2 dark:shadow-[0_0_24px_rgba(224,101,58,0.4)]"
                       : "flex h-12 w-12 items-center justify-center rounded-full bg-surface-container-highest/20 text-inverse-on-surface transition-all group-hover:translate-x-2 group-hover:bg-primary group-hover:text-on-primary dark:bg-white/10 dark:text-dark-ink dark:group-hover:bg-primary dark:group-hover:text-on-primary"
                   }
                 >
-                  <ArrowUpRight size={20} />
-                </div>
+                  <ArrowUpRight size={20} aria-hidden />
+                </span>
               </div>
-            </div>
+            </a>
           </Reveal>
         ))}
       </div>
